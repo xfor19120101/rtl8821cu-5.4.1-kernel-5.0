@@ -9,18 +9,19 @@ linux kernel 5.0 remove VLA, original source files contain VLAs, this drv just:
 better wait for realtek to release new. but just work fine.
 
 an improved stability got by a fix:
-core/rtw_wlan_util.c
+core/rtw_wlan_util.c:
 
 	source = rtw_zmalloc(2048);
 
 	if (source != NULL) {
 4494 +#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
-		+len = kernel_read(fp, source, len, &pos);
+	+len = kernel_read(fp, source, len, &pos);
 +#else
-		len = vfs_read(fp, source, len, &pos);
+	len = vfs_read(fp, source, len, &pos);
 +#endif
-		rtw_parse_cipher_list(nlo_info, source);
+        	rtw_parse_cipher_list(nlo_info, source);
 		rtw_mfree(source, 2048);
 	}
 ...
+
 without this fix, system would got unresponsive ramdomly for about 30 minutes. don't know why.
