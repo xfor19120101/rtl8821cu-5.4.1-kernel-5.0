@@ -1,7 +1,7 @@
 1.check your system can compile software, gcc, kernel-devel etc.
 2.download the zip file,
 3.unzip .zip file
-4. cd *rtl8821
+4. cd rtl8821*
 5.make clean
 6.make -j8
 7. make strip
