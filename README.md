@@ -15,7 +15,7 @@ modify core/rtw_wlan_util.c:
 
 4493	if (source != NULL) {
 4494 +#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0))
-4495	+len = kernel_read(fp, source, len, &pos);
+4495 +	len = kernel_read(fp, source, len, &pos);
 4496 +#else
 4497	len = vfs_read(fp, source, len, &pos);
 4498 +#endif
