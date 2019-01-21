@@ -25,4 +25,4 @@ modify core/rtw_wlan_util.c:
 ...
 </pre>
 
-without this fix, system would got unresponsive ramdomly for about 30 minutes. don't know why.
+without this fix, system would get unresponsive ramdomly for about 30 minutes. 
